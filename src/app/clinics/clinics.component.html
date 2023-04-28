@@ -1,0 +1,7 @@
+
+<h2>All Clinics</h2>
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let clinic of clinics">
+        <a [routerLink]="['/clinic', clinic.id]">{{clinic.name}} </a>
+    </li>
+</ul>
