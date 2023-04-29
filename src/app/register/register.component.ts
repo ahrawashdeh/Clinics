@@ -16,7 +16,7 @@ export class RegisterComponent {
 
   register() {
     this.authService.register(this.user);
-    this.router.navigate(['/login']);
+    this.router.navigate(['/clinics']);
   }
 
 }

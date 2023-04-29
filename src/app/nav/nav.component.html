@@ -12,12 +12,12 @@
 
 
                     <a class="nav-item nav-link" routerLink="/register" routerLinkActive="active"
-                        *ngIf="!isLoggedIn()">Register</a>
+                        *ngIf="!(isLoggedIn() | async)">Register</a>
 
                     <a class="nav-item nav-link" routerLink="/login" routerLinkActive="active"
-                        *ngIf="!isLoggedIn()">Login</a>
+                        *ngIf="!(isLoggedIn() | async)">Login</a>
 
-                    <a class="nav-item nav-link" (click)="logout()" *ngIf="isLoggedIn()"
+                    <a class="nav-item nav-link" (click)="logout()" *ngIf="isLoggedIn() | async"
                         style="cursor: pointer;">Logout</a>
                 </div>
             </div>

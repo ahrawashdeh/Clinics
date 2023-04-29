@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../services/account.service';
+import { map } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -8,20 +10,25 @@ import { AccountService } from '../services/account.service';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
+    console.log(this.isLoggedIn().subscribe(res => console.log(res)))
   }
 
   isLoggedIn() {
-    return this.accountService.currentUser$.subscribe(response => {
-      if (response)
-        return true
-      return false
-    });
+    return this.accountService.currentUser$.pipe(
+      map(user => {
+        if (user) 
+          return true
+        else 
+          return false
+      })
+    )
   }
 
   logout() {
     this.accountService.logout();
+    this.router.navigateByUrl('/login')
   }
 }
