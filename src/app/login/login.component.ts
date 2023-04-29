@@ -21,7 +21,7 @@ export class LoginComponent {
     if (token) {
       this.router.navigate(['/']);
     } else {
-      this.toaster.error("Invalid email or password")
+      this.toaster.error("Invalid username or password")
     }
   }
 

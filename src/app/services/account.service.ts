@@ -32,7 +32,7 @@ export class AccountService {
 
     const users = this.getUsers();
 
-    const matchingUser = users.find(u => u.username === user.username && u.password === user.password);
+    const matchingUser = users.find(u => u.username == user.username && u.password == user.password);
     if (!matchingUser) {
       return false;
     }
@@ -45,17 +45,6 @@ export class AccountService {
 
   public logout(): void {
     this.removeToken();
-  }
-
-  public isLoggedIn(): boolean {
-    const token = this.getToken();
-    
-    if (!token) {
-      return false;
-    }
-    return true
-    // const decodedToken = this.decodeToken(token);
-    // return decodedToken.exp > Date.now() / 1000;
   }
 
   setCurrentUser(user: User) {
