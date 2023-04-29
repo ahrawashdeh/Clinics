@@ -11,13 +11,12 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent {
 
-  name: string = '';
-  password: string = '';
+  user: any = {}
 
   constructor(private authService: AccountService, private router: Router, private toaster: ToastrService) {}
 
   login() {
-    const token = this.authService.login(this.name, this.password);
+    const token = this.authService.login(this.user);
 
     if (token) {
       this.router.navigate(['/']);
