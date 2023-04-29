@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { NavComponent } from './nav/nav.component';
 import { ClinicManagementComponent } from './clinic-management/clinic-management.component';
 import { ClinicDetailsComponent } from './clinic-details/clinic-details.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { ClinicDetailsComponent } from './clinic-details/clinic-details.componen
     ClinicsComponent,
     NavComponent,
     ClinicManagementComponent,
-    ClinicDetailsComponent
+    ClinicDetailsComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
