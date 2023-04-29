@@ -30,6 +30,13 @@ export class AccountService {
 
   public login(username: string, password: string): boolean {
 
+    const users = this.getUsers();
+
+    const matchingUser = users.find(user => user.username === username && user.password === password);
+    if (!matchingUser) {
+      return false;
+    }
+
     const token = this.generateToken(username, password);
     this.setToken(token);
     return true;
