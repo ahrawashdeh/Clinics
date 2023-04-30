@@ -13,7 +13,6 @@ export class NavComponent implements OnInit {
   constructor(private accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
-    console.log(this.isLoggedIn().subscribe(res => console.log(res)))
   }
 
   isLoggedIn() {

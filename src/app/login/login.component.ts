@@ -17,7 +17,6 @@ export class LoginComponent {
 
   login() {
     const token = this.authService.login(this.user);
-
     if (token) {
       this.router.navigate(['/']);
     } else {

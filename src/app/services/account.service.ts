@@ -24,27 +24,29 @@ export class AccountService {
   }
 
   public removeToken(): void {
-    localStorage.removeItem(this.TOKEN_KEY);
-    this.currentUserSource.next(null);
+    
   }
 
   public login(user: User): boolean {
 
     const users = this.getUsers();
+    console.log(user)
 
-    const matchingUser = users.find(u => u.username == user.username && u.password == user.password);
-    if (!matchingUser) {
-      return false;
+    for (const u of users) {
+      if (u.username === user.username && u.password === user.password) {
+        const token = this.generateToken(user.username, user.password);
+        this.setToken(token);
+        this.setCurrentUser(user)
+        return true;
+      }
     }
-
-    const token = this.generateToken(user.username, user.password);
-    this.setToken(token);
-    this.setCurrentUser(user)
-    return true;
+    return false
   }
 
   public logout(): void {
-    this.removeToken();
+    localStorage.removeItem(this.TOKEN_KEY);
+    localStorage.removeItem('user');
+    this.currentUserSource.next(null);
   }
 
   setCurrentUser(user: User) {
@@ -77,6 +79,9 @@ export class AccountService {
     const newUser = { ...user, id: newUserId };
     users.push(newUser);
     localStorage.setItem(this.USERS_KEY, JSON.stringify(users));
+
+    const token = this.generateToken(user.username, user.password);
+    this.setToken(token);
     this.setCurrentUser(user)
   }
 
