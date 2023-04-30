@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private accountService: AccountService, private router: Router) { }
+  constructor(public accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
   }

@@ -8,14 +8,14 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-item nav-link" routerLink="/clinics" routerLinkActive="active">Clinics</a>
-                    <a class="nav-item nav-link" routerLink="/clinic-management" routerLinkActive="active">Clinic Management</a>
+                    <a *ngIf="accountService.currentUser$ | async" class="nav-item nav-link" routerLink="/clinic-management" routerLinkActive="active">Clinic Management</a>
 
 
                     <a class="nav-item nav-link" routerLink="/register" routerLinkActive="active"
                         *ngIf="!(isLoggedIn() | async)">Register</a>
 
                     <a class="nav-item nav-link" routerLink="/login" routerLinkActive="active"
-                        *ngIf="!(isLoggedIn() | async)">Login</a>
+                        *ngIf="!(accountService.currentUser$| async)">Login</a>
 
                     <a class="nav-item nav-link" (click)="logout()" *ngIf="isLoggedIn() | async"
                         style="cursor: pointer;">Logout</a>

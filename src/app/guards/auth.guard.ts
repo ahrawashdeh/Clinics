@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.accountService.currentUser$.pipe(
       map(user => {
-        if (user) return true
+        if (user?.role == 'Admin') return true
         else {
           this.toaster.error('You shall not pass!');
           return false

@@ -36,7 +36,7 @@ export class AccountService {
       if (u.username === user.username && u.password === user.password) {
         const token = this.generateToken(user.username, user.password);
         this.setToken(token);
-        this.setCurrentUser(user)
+        this.setCurrentUser(u)
         return true;
       }
     }
