@@ -6,7 +6,11 @@
     </div>
     <div>
         <label>Role</label>
-        <input [(ngModel)]="user.role" name="role" type="text" class="form-control">
+        <!-- <input [(ngModel)]="user.role" name="role" type="text" class="form-control"> -->
+        <select [(ngModel)]="user.role" name="role" class="form-control">
+            <option value="Admin">Admin</option>
+            <option value="Patient">Patient</option>
+        </select>
     </div>
     <div>
         <label>Password</label>
