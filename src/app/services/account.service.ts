@@ -53,10 +53,10 @@ export class AccountService {
   private generateToken(username: string, password: string): string {
     const tokenPayload = {
       sub: username,
-      exp: Math.floor(Date.now() / 1000) + (60 * 60) // Token expires in 1 hour
+      exp: Math.floor(Date.now() / 1000) + (60 * 60) 
     };
     const tokenData = JSON.stringify(tokenPayload);
-    const token = btoa(tokenData + password); // Combine token data with password and encode it using base64
+    const token = btoa(tokenData + password);
     return token;
   }
 
@@ -67,11 +67,9 @@ export class AccountService {
   // }
 
   public register(user: User): void {
-    // Generate a unique ID for the new user
     const users = this.getUsers();
     const lastUserId = users.length > 0 ? users[users.length - 1].id : 0;
     const newUserId = lastUserId + 1;
-    // Set the ID for the new user and save the user data in local storage
     const newUser = { ...user, id: newUserId };
     users.push(newUser);
     localStorage.setItem(this.USERS_KEY, JSON.stringify(users));
