@@ -23,10 +23,6 @@ export class AccountService {
     localStorage.setItem(this.TOKEN_KEY, token);
   }
 
-  public removeToken(): void {
-    
-  }
-
   public login(user: User): boolean {
 
     const users = this.getUsers();
